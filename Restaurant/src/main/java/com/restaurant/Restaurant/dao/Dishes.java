@@ -19,6 +19,7 @@ public class Dishes {
 	 * Added new mapping for Bidirectional Mapping.
 	 */
 	@Column(name = "restaurant")
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Restaurant restaurant;
 
 	public Dishes() {
