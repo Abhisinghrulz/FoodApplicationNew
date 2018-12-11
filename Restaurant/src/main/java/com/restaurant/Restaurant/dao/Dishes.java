@@ -1,5 +1,7 @@
 package com.restaurant.Restaurant.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,7 @@ public class Dishes {
 	 */
 	//@Column(name = "restaurant")
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JsonBackReference
 	private Restaurant restaurant;
 
 	public Dishes() {

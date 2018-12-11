@@ -1,5 +1,7 @@
 package com.restaurant.Restaurant.dao;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -40,6 +42,7 @@ public class Restaurant {
 	 * should be fired only when getCall is made for List<Dishes>.
 	 */
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "restaurant", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private Collection<Dishes> restaurantDishesCollection;
 
 	public Restaurant() {
