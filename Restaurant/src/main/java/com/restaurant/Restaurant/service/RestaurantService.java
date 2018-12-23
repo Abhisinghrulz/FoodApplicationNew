@@ -10,33 +10,15 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Service
-public class RestaurantService
+public interface RestaurantService
 {
-    @Autowired
-    RestaurantRepository restaurantRepository;
+    void addRestaurant(Restaurant restaurant);
 
-    Collection<Restaurant> restaurants = new ArrayList<>();
+    Collection<Restaurant> getAllRestaurants();
 
-    public void addRestaurant(Restaurant restaurant) { restaurantRepository.save(restaurant);}
+    Optional<Restaurant> getRestaurantById(Integer id);
 
-    public Collection<Restaurant> getAllRestaurants()
-    {
-        restaurantRepository.findAll().forEach(restaurants::add);
-        return restaurants;
-    }
+    void deleteRestaurantById(Integer id);
 
-    public Optional<Restaurant> getRestaurantById(Integer id)
-    {
-        return restaurantRepository.findById(id);
-    }
-
-    public void deleteRestaurantById(Integer id)
-    {
-        restaurantRepository.deleteById(id);
-    }
-
-    public void deleteAll()
-    {
-        restaurantRepository.deleteAll();
-    }
+    void deleteAll();
 }

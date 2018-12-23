@@ -1,8 +1,11 @@
 package com.restaurant.Restaurant.controller;
 
 import com.restaurant.Restaurant.dao.Restaurant;
+import com.restaurant.Restaurant.service.RestaurantImpl;
 import com.restaurant.Restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -16,7 +19,11 @@ public class RestaurantController
     public RestaurantService restaurantService;
 
     @PostMapping("/addRestaurant")
-    public void addRestaurant(@RequestBody Restaurant restaurant){ restaurantService.addRestaurant(restaurant);}
+    public ResponseEntity<String> addRestaurant(@RequestBody Restaurant restaurant)
+    {
+        restaurantService.addRestaurant(restaurant);
+        return new ResponseEntity<String>("Restaurant "+restaurant.getRestaurantName()+"  is added", HttpStatus.OK);
+    }
 
     @GetMapping("/allRestaurants")
     public Collection<Restaurant> getAllRestaurants(){return restaurantService.getAllRestaurants();}
@@ -28,10 +35,15 @@ public class RestaurantController
     }
 
     @DeleteMapping("deleteRestaurantById/{id}")
-    public void deleteRestaurantById(@PathVariable Integer id){ restaurantService.deleteRestaurantById(id);}
+    public ResponseEntity<String> deleteRestaurantById(@PathVariable Integer id)
+    {
+        restaurantService.deleteRestaurantById(id);
+        return new ResponseEntity<String>("Restaurant with Restaurant Id -> "+id + " is deleted",HttpStatus.OK);
+    }
 
     @DeleteMapping("/deleteAll")
-    public  void deleteAllRestaurants(){
+    public  void deleteAllRestaurants()
+    {
         restaurantService.deleteAll();
     }
 }
