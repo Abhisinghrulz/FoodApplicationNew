@@ -61,6 +61,7 @@
 	<modules>
 		<module>Customers</module>
 		<module>Restaurant</module>
+		<module>Orders</module>
 	</modules>
 
 

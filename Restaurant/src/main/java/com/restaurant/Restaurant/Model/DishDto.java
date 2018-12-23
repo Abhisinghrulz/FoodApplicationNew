@@ -10,6 +10,18 @@ public class DishDto {
 
 	private Integer restaurant;
 
+	public DishDto(String rtDishName, Float rtDishPrice, Integer restaurant)
+	{
+		this.rtDishName = rtDishName;
+		this.rtDishPrice = rtDishPrice;
+		this.restaurant = restaurant;
+	}
+
+	public DishDto()
+	{
+
+	}
+
 	public Integer getRtDishId() {
 		return rtDishId;
 	}
