@@ -22,6 +22,7 @@ public class Dishes {
 	 */
 	//@Column(name = "restaurant")
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "RestaurantId")
 	@JsonBackReference
 	private Restaurant restaurant;
 

@@ -3,7 +3,6 @@ package com.restaurant.Restaurant.dao;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Collection;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,7 +40,7 @@ public class Restaurant {
 	 * Check whether FetchType lazy is working or not . Select query for Dishes
 	 * should be fired only when getCall is made for List<Dishes>.
 	 */
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "restaurant", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "restaurant", fetch = FetchType.LAZY, orphanRemoval = true)
 	@JsonManagedReference
 	private Collection<Dishes> restaurantDishesCollection;
 
